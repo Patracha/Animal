@@ -6,6 +6,6 @@ export default class Propietario{
         this._animal = animal; 
     }
     datosdelpropietario(){
-        return `El nombre del propietario es ${nombre}, con direccion en ${direccion}, su telefono es ${telefono} y tiene un ${animal}`
+        return console.log(`El nombre del propietario es ${nombre}, con direccion en ${direccion}, su telefono es ${telefono} y tiene un ${animal}`);
     }
 } 
