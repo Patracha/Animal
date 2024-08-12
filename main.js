@@ -1,10 +1,10 @@
-import Animal from "./animal.js"
 import Propietario from "./propietario.js"
 import Gato from "./Gato.js";
 import Perro from "./Perro.js";
 import Conejo from "./Conejo.js";
 let cliente =[];
 let boton = document.getElementById("boton"); 
+let tabla = document.querySelector("#resultado")
 /* Capturar los elementos desde el DOM */
 boton.addEventListener("click",() =>{
 
@@ -15,19 +15,33 @@ boton.addEventListener("click",() =>{
     let enfermedad = document.getElementById("enfermedad").value; 
     let tipo = document.getElementById("tipo").value; 
 
-    if (tipo == "perro"){
-        cliente.push(new Propietario(propietario, direccion, telefono, new Perro(nombre, enfermedad))) ;
-    
-    }
-    else if (tipo == "gato"){
-        cliente.push = new Propietario(propietario, direccion, telefono, new Gato(nombre, enfermedad));
-    }
-    else if (tipo == "conejo"){
-        cliente.push = new Propietario(propietario, direccion, telefono, new Conejo(nombre, enfermedad));
-    }
-    
-    console.log(cliente[0]); 
+let nuevaMascota; 
 
+        if (tipo === "perro") {
+    nuevaMascota = new Perro(nombre, enfermedad);
+}       else if (tipo === "gato") {
+    nuevaMascota = new Gato(nombre, enfermedad);
+}       else if (tipo === "conejo") {
+    nuevaMascota = new Conejo(nombre, enfermedad);
+}
+    
+    cliente.push(new Propietario(propietario, direccion, telefono, nuevaMascota));
+    tabla.innerHTML = "";
+    cliente.forEach(function(cliente) {
+    
+        let filas = ` <tr>
+                           <th>${cliente._nombre}</th>
+                           <td>${cliente._telefono}</td>
+                           <td>${cliente._direccion}</td>
+                           <td>${cliente._animal.nombre}</td>
+                           <td>${tipo}</td>
+                           <td>${cliente._animal.enfermedad}</td>
+                           
+                           
+                       ` 
+        tabla.innerHTML += filas; 
+    }
+    )
 })
 
 
